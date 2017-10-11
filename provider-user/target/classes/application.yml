@@ -1,0 +1,23 @@
+server:
+  port: 7900
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    # ���ý������
+    schema: classpath:schema.sql
+    # ���ó�ʼ������
+    data: classpath:data.sql
+logging:
+  level:
+    root: info
+    ### start ��ʾ sql ��䣬ͬʱ��ӡ����
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace
+    ### end ��ʾ sql ��䣬ͬʱ��ӡ����
+    com.itmuch: debug

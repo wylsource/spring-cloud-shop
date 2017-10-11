@@ -1,0 +1,23 @@
+server:
+  port: 7900
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    # 配置建表语句
+    schema: classpath:schema.sql
+    # 配置初始化数据
+    data: classpath:data.sql
+logging:
+  level:
+    root: info
+    ### start 显示 sql 语句，同时打印参数
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace
+    ### end 显示 sql 语句，同时打印参数
+    com.itmuch: debug
