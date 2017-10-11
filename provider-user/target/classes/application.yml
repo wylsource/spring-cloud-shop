@@ -8,16 +8,26 @@ spring:
       ddl-auto: none
   datasource:
     platform: h2
-    # ���ý������
+    # 配置建表语句
     schema: classpath:schema.sql
-    # ���ó�ʼ������
+    # 配置初始化数据
     data: classpath:data.sql
+  application:
+    name: provider-user
 logging:
   level:
     root: info
-    ### start ��ʾ sql ��䣬ͬʱ��ӡ����
+    ### start 显示 sql 语句，同时打印参数
     org.hibernate: info
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: trace
-    ### end ��ʾ sql ��䣬ͬʱ��ӡ����
+    ### end 显示 sql 语句，同时打印参数
     com.itmuch: debug
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}

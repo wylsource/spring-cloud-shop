@@ -8,16 +8,26 @@ spring:
       ddl-auto: none
   datasource:
     platform: h2
-    # ÅäÖÃ½¨±íÓï¾ä
+    # é…ç½®å»ºè¡¨è¯­å¥
     schema: classpath:schema.sql
-    # ÅäÖÃ³õÊ¼»¯Êı¾İ
+    # é…ç½®åˆå§‹åŒ–æ•°æ®
     data: classpath:data.sql
+  application:
+    name: provider-user
 logging:
   level:
     root: info
-    ### start ÏÔÊ¾ sql Óï¾ä£¬Í¬Ê±´òÓ¡²ÎÊı
+    ### start æ˜¾ç¤º sql è¯­å¥ï¼ŒåŒæ—¶æ‰“å°å‚æ•°
     org.hibernate: info
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: trace
-    ### end ÏÔÊ¾ sql Óï¾ä£¬Í¬Ê±´òÓ¡²ÎÊı
+    ### end æ˜¾ç¤º sql è¯­å¥ï¼ŒåŒæ—¶æ‰“å°å‚æ•°
     com.itmuch: debug
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
